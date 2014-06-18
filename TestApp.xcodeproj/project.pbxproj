@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F39C14F1951F8A500195857 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F39C14E1951F8A500195857 /* Blank52.png */; };
 		1F63C167194A0B6C0065CFF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63C166194A0B6C0065CFF8 /* AppDelegate.swift */; };
 		1F63C169194A0B6C0065CFF8 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63C168194A0B6C0065CFF8 /* SearchResultsViewController.swift */; };
 		1F63C16C194A0B6C0065CFF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F63C16A194A0B6C0065CFF8 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F39C14E1951F8A500195857 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 		1F63C161194A0B6C0065CFF8 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F63C165194A0B6C0065CFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F63C166194A0B6C0065CFF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				1FADCB121951789800A3354A /* APIController.swift */,
 				1F63C166194A0B6C0065CFF8 /* AppDelegate.swift */,
+				1F39C14E1951F8A500195857 /* Blank52.png */,
 				1F63C168194A0B6C0065CFF8 /* SearchResultsViewController.swift */,
 				1F63C16A194A0B6C0065CFF8 /* Main.storyboard */,
 				1F63C16D194A0B6C0065CFF8 /* Images.xcassets */,
@@ -192,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F39C14F1951F8A500195857 /* Blank52.png in Resources */,
 				1F63C16C194A0B6C0065CFF8 /* Main.storyboard in Resources */,
 				1F63C16E194A0B6C0065CFF8 /* Images.xcassets in Resources */,
 			);
