@@ -3,7 +3,7 @@
 //  TestApp
 //
 //  Created by zhang on 14-6-13.
-//  Copyright (c) 2014年 zhang. All rights reserved.
+//  Copyright (c) 2014 zhang. All rights reserved.
 //
 
 import UIKit

@@ -7,43 +7,23 @@
 //
 import UIKit
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol {
     
+    var api: APIController?
+    
+    init(coder aCoder:NSCoder!) {
+        super.init(coder:aCoder)
+        self.api = APIController(delegate: self);
+    }
     
     // TabView object
     @IBOutlet var appsTableView : UITableView
-    
-    var data: NSMutableData = NSMutableData()
-    
     var tableData: NSArray = NSArray()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Search & show results
-        searchItunesFor("Angry Birds");
-        
-    }
-    
-    /*
-     * Seach in itunes
-     */
-    func searchItunesFor(searchTerm: String) {
-        // The iTunes API wants multiple terms separated by + symbols, so replace spaces with + signs
-        var itunesSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-        // Now escape anything else that isn't URL-friendly
-        var escapedSearchTerm = itunesSearchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        
-        var urlPath:String = "https://itunes.apple.com/search?term=\(escapedSearchTerm)&media=software"
-        var url: NSURL = NSURL(string: urlPath)
-        
-        var request: NSURLRequest = NSURLRequest(URL: url)
-        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)
-        
-        println("Search iTunes API at URL \(url)")
-        // Actually start network access
-        connection.start()
+        api!.searchItunesFor("Angry Birds");
     }
     
 
@@ -74,42 +54,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
-        println("Connection failed.\(error.localizedDescription)")
-    }
-    
-    
-    func connection(connection: NSURLConnection, didRecieveResponse response: NSURLResponse)  {
-        println("Recieved response")
-    }
-    
-    func connection(didReceiveResponse: NSURLConnection!, didReceiveResponse response: NSURLResponse!) {
-        // Recieved a new request, clear out the data object
-        self.data = NSMutableData()
-    }
-    
-    
-    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
-        // Append the recieved chunk of data to our data object
-        self.data.appendData(data)
-    }
-    
-    
-    func connectionDidFinishLoading(connection: NSURLConnection!) {
-        // Request complete, self.data should now hold the resulting info
-        // Convert it to a string
-        var dataAsString: NSString = NSString(data: self.data, encoding: NSUTF8StringEncoding)
-        println(dataAsString)
-    
-        // Convert the retrieved data in to an object through JSON deserialization
-        var err: NSError
-        var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        if jsonResult.count>0 && jsonResult["results"].count>0 {
-            var results: NSArray = jsonResult["results"] as NSArray
-            self.tableData = results
+    func didRecieveAPIResults(results: NSDictionary) {
+        println("Received result. Count \(results.count)")
+        // Store the results in our table data array
+        if results.count>0 {
+            self.tableData = results["results"] as NSArray
             self.appsTableView.reloadData()
         }
     }
-    
 }
