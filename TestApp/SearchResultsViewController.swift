@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchResultsViewController.swift
 //  TestApp
 //
 //  Created by zhang on 14-6-13.
@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
     
     
     // TabView object
