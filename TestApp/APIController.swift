@@ -29,7 +29,7 @@ class APIController: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDeleg
         // Now escape anything else that isn't URL-friendly
         var escapedSearchTerm = itunesSearchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         
-        var urlPath:String = "https://itunes.apple.com/search?term=\(escapedSearchTerm)&media=software"
+        var urlPath:String = "https://itunes.apple.com/search?term=\(escapedSearchTerm)&media=music&entity=album"
         var url: NSURL = NSURL(string: urlPath)
         
         var request: NSURLRequest = NSURLRequest(URL: url)

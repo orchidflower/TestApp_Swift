@@ -12,26 +12,26 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var api: APIController?
     let kCellIdentifier: String = "SearchResultCell"
     var imageCache = NSMutableDictionary()
+    // TabView object
+    @IBOutlet var appsTableView : UITableView
+    var albums: Album[] = []
+    
     
     init(coder aCoder:NSCoder!) {
         super.init(coder:aCoder)
         self.api = APIController(delegate: self);
     }
     
-    // TabView object
-    @IBOutlet var appsTableView : UITableView
-    var tableData: NSArray = NSArray()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Search & show results
-        api!.searchItunesFor("Angry Birds");
+        api!.searchItunesFor("Bob Dylan");
     }
     
 
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        println("callback tableView. section \(section), count \(tableData.count)")
-        return tableData.count
+        println("callback tableView. section \(section), count \(self.albums.count)")
+        return self.albums.count
     }
     
 
@@ -41,22 +41,20 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: kCellIdentifier)
         }
         
-        var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
+        let album: Album = self.albums[indexPath.row] as Album
         // Add a check to make sure this exists
-        let cellText:String? = rowData["trackName"] as? String
-        cell.text = cellText
+        cell.text = album.title
         cell.image = UIImage(named: "Blank52")
-        
-        var formattedPrice: NSString = rowData["formattedPrice"] as NSString
+        cell.detailTextLabel.text = album.price
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             // Jump into a background thread to get the image for this item
             // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
-            var urlString: NSString = rowData["artworkUrl60"] as NSString
+            let urlString = album.thumbnailImageURL
             // Check our image cache for the existing key. This is just a dictionary of UIImages
-            var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
+            var image: UIImage? = self.imageCache[urlString] as? UIImage
             
-            if (!image) {
+            if (!image?) {
                 // If the image does not exists, we need to download it
                 var imgURL:NSURL = NSURL(string:urlString)
                 // Download an NSData representation of the image of the URL
@@ -68,7 +66,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                         image = UIImage(data:data)
                         //Store the image into our cache
                         self.imageCache.setValue(image, forKey: urlString)
-                        cell.image = image
+                        
+                        // Sometimes this request takes a while, and it's possible that a cell could be re-used before the art is done loading.
+                        // Let's explicitly call the cellForRowAtIndexPath method of our tableView to make sure the cell is not nil, and therefore still showing onscreen.
+                        // While this method sounds a lot like the method we're in right now, it isn't.
+                        // Ctrl+Click on the method name to see how it's defined, including the following comment:
+                        /** // returns nil if cell is not visible or index path is out of range **/
+                        if let albumArtsCell: UITableViewCell? = tableView.cellForRowAtIndexPath(indexPath) {
+                            albumArtsCell!.image = image
+                        }
                     } else {
                         println("Error: \(error.localizedDescription)")
                     }
@@ -77,49 +83,74 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 cell.image = image
             }
         })
-        cell.detailTextLabel.text = formattedPrice
         return cell
     }
     
     
     func didRecieveAPIResults(results: NSDictionary) {
-        println("Received result. Count \(results.count)")
         // Store the results in our table data array
         if results.count>0 {
-            self.tableData = results["results"] as NSArray
-            self.appsTableView.reloadData()
+            
+            let allResults: NSDictionary[] = results["results"] as NSDictionary[]
+            
+            // Sometimes iTunes returns a collection, not a track, so we check both for the 'name'
+            for result: NSDictionary in allResults {
+                
+                var name: String? = result["trackName"] as? String
+                if !name? {
+                    name = result["collectionName"] as? String
+                }
+                
+                // Sometimes price comes in as formattedPrice, sometimes as collectionPrice.. and sometimes it's a float instead of a string. Hooray!
+                var price: String? = result["formattedPrice"] as? String
+                if !price? {
+                    price = result["collectionPrice"] as? String
+                    if !price? {
+                        var priceFloat: Float? = result["collectionPrice"] as? Float
+                        var nf: NSNumberFormatter = NSNumberFormatter()
+                        nf.maximumFractionDigits = 2;
+                        if priceFloat? {
+                            price = "$"+nf.stringFromNumber(priceFloat)
+                        }
+                    }
+                }
+                
+                let thumbnailURL: String? = result["artworkUrl60"] as? String
+                let imageURL: String? = result["artworkUrl100"] as? String
+                let artistURL: String? = result["artistViewUrl"] as? String
+                
+                var itemURL: String? = result["collectionViewUrl"] as? String
+                if !itemURL? {
+                    itemURL = result["trackViewUrl"] as? String
+                }
+                
+                var newAlbum = Album(name: name!, price: price!, thumbnailImageURL: thumbnailURL!, largeImageURL: imageURL!, itemURL: itemURL!, artistURL: artistURL!)
+                albums.append(newAlbum)
+            }
+            
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.appsTableView.reloadData()
+                })
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        
-        
-        
         // Get the row data for the selected row
-        
-        var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
-        
-        println(rowData)
+        var album: Album = self.albums[indexPath.row] as Album
+        println(album)
         
         
         
-        var name: String = rowData["trackName"] as String
+        var name: String = album.title!
         
-        var formattedPrice: String = rowData["formattedPrice"] as String
-        
-        
+        var formattedPrice: String = album.price!
         
         var alert: UIAlertView = UIAlertView()
-        
         alert.title = name
-        
         alert.message = formattedPrice
-        
         alert.addButtonWithTitle("Ok")
-        
         alert.show()
-        
-        
-        
     }
 }
