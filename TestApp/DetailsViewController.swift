@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MediaPlayer
+import QuartzCore
 
 class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol  {
+    var mediaPlayer: MPMoviePlayerController = MPMoviePlayerController()
     
     @IBOutlet var albumCover : UIImageView
     @IBOutlet var titleLabel : UILabel
@@ -66,5 +69,22 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         dispatch_async(dispatch_get_main_queue(), {
             self.tracksTableView.reloadData()
         })
+    }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        var track = tracks[indexPath.row]
+        mediaPlayer.stop()
+        mediaPlayer.contentURL = NSURL(string: track.previewUrl)
+        mediaPlayer.play()
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? TrackCell {
+            cell.playIcon.text = "▪️"
+        }
+    }
+    
+    func tableView(tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.25, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+            })
     }
 }
