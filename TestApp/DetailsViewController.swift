@@ -12,10 +12,13 @@ import QuartzCore
 
 class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol  {
     var mediaPlayer: MPMoviePlayerController = MPMoviePlayerController()
+    let PLAY_ICON = "▶️"
+    let STOP_ICON = "▪️"
     
     @IBOutlet var albumCover : UIImageView
     @IBOutlet var titleLabel : UILabel
     @IBOutlet var tracksTableView : UITableView
+    var indexOfTrackPlaying : NSIndexPath? = nil
     
     var album: Album?
     var tracks: Track[] = []
@@ -49,7 +52,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         var track = tracks[indexPath.row]
         cell.titleLabel.text = track.title
-        cell.playIcon.text = "▶️"
+//        cell.playIcon.text = PLAY_ICON
         
         return cell
     }
@@ -73,12 +76,38 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         var track = tracks[indexPath.row]
-        mediaPlayer.stop()
-        mediaPlayer.contentURL = NSURL(string: track.previewUrl)
-        mediaPlayer.play()
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? TrackCell {
-            cell.playIcon.text = "▪️"
+        var indexPathThatWasPlaying: NSIndexPath? = nil
+        if let cell=tableView.cellForRowAtIndexPath(indexPath) as? TrackCell {
+            if trackPlaying(indexPath) {        // current track is playing, stop it
+                cell.playIcon.text = PLAY_ICON
+                stopPlayingTrack()
+            } else {
+                cell.playIcon.text = STOP_ICON
+                indexPathThatWasPlaying = stopPlayingTrack()
+                mediaPlayer.contentURL = NSURL(string: track.previewUrl)
+                mediaPlayer.play()
+                indexOfTrackPlaying = indexPath
+            }
+            var paths: NSIndexPath[] = [indexPath]
+//            if (indexPathThatWasPlaying? != nil) {
+//                paths = [indexPath, indexPathThatWasPlaying!]
+//            }
+            tableView.reloadRowsAtIndexPaths(paths, withRowAnimation: UITableViewRowAnimation.None)
         }
+    }
+    
+    func stopPlayingTrack() -> NSIndexPath? {
+        mediaPlayer.stop()
+        var indexPathThatWasPlaying = indexOfTrackPlaying
+        indexOfTrackPlaying = nil
+//        if let cell = self.tracksTableView.cellForRowAtIndexPath(indexPathThatWasPlaying) as? TrackCell {
+//            cell.playIcon.text = PLAY_ICON
+//        }
+        return indexPathThatWasPlaying
+    }
+    
+    func trackPlaying(indexPath: NSIndexPath) -> Bool {
+        return (indexOfTrackPlaying? != nil) && (indexOfTrackPlaying! == indexPath)
     }
     
     func tableView(tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
