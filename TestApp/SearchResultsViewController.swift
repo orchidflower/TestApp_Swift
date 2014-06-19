@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 zhang. All rights reserved.
 //
 import UIKit
-import QuartzCore
+//import QuartzCore
 
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol {
     
@@ -138,12 +138,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func tableView(tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-        UIView.animateWithDuration(0.25, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-            })
-    }
+//    func tableView(tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
+//        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+//        UIView.animateWithDuration(0.25, animations: {
+//            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+//            })
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
         var detailsViewController: DetailsViewController = segue.destinationViewController as DetailsViewController
