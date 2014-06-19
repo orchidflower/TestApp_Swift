@@ -20,6 +20,31 @@ class APIController: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDeleg
     init(delegate: APIControllerProtocol?) {
         self.delegate = delegate
     }
+    
+    
+    
+    func get(path: String) {
+        let url = NSURL(string: path)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            println("Task Completed")
+            if (error) {
+                // If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            var err:NSError?
+            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+            if err? {
+                // If there is an error parsing JSON, print it to the console
+                println("JSON Error \(err!.localizedDescription)")
+            }
+            var results = jsonResult["results"] as NSArray
+            // Now send the JSON result to our delegate object
+            self.delegate?.didRecieveAPIResults(jsonResult)
+            })
+        task.resume()
+    }
+    
     /*
     * Seach in itunes
     */
@@ -29,15 +54,12 @@ class APIController: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDeleg
         // Now escape anything else that isn't URL-friendly
         var escapedSearchTerm = itunesSearchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         
-        var urlPath:String = "https://itunes.apple.com/search?term=\(escapedSearchTerm)&media=music&entity=album"
-        var url: NSURL = NSURL(string: urlPath)
-        
-        var request: NSURLRequest = NSURLRequest(URL: url)
-        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)
-        
-        println("Search iTunes API at URL \(url)")
-        // Actually start network access
-        connection.start()
+        let urlPath = "https://itunes.apple.com/search?term=\(escapedSearchTerm)&media=music&entity=album"
+        get(urlPath)
+    }
+    
+    func lookupAlbum(collectionId: Int) {
+        get("https://itunes.apple.com/lookup?id=\(collectionId)&entity=song")
     }
     
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
@@ -59,7 +81,7 @@ class APIController: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDeleg
         // Append the recieved chunk of data to our data object
         self.data.appendData(data)
     }
-    
+
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         // Request complete, self.data should now hold the resulting info

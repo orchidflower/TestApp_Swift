@@ -61,7 +61,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="L67-NP-oJa"/>
                     <connections>
-                        <outlet property="appsTableView" destination="VQF-2O-TDL" id="NWC-Bi-QDL"/>
+                        <outlet property="appsTableView" destination="VQF-2O-TDL" id="R3l-Ig-yWI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -81,31 +81,81 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grg-Vn-Tgs">
-                                <rect key="frame" x="219" y="248" width="42" height="21"/>
+                                <rect key="frame" x="108" y="103" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FAs-Ro-ZIX">
-                                <rect key="frame" x="190" y="140" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="aHM-q3-tXF"/>
                                     <constraint firstAttribute="height" constant="100" id="aUb-a5-pjN"/>
                                 </constraints>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PmO-bf-VGJ">
+                                <rect key="frame" x="0.0" y="172" width="480" height="308"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackCell" id="hGy-bk-L0j" customClass="TrackCell" customModule="TestApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hGy-bk-L0j" id="H8j-yE-lns">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmJ-Fy-Y5n">
+                                                    <rect key="frame" x="39" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▪️" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sa-oX-005">
+                                                    <rect key="frame" x="8" y="10" width="23" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="23" id="AVt-7d-fAZ"/>
+                                                        <constraint firstAttribute="height" constant="23" id="dGd-gF-7fx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Sa-oX-005" firstAttribute="leading" secondItem="H8j-yE-lns" secondAttribute="leading" constant="8" id="Ecs-Tv-1aI"/>
+                                                <constraint firstAttribute="centerY" secondItem="1Sa-oX-005" secondAttribute="centerY" id="Mve-0t-W8v"/>
+                                                <constraint firstAttribute="centerY" secondItem="OmJ-Fy-Y5n" secondAttribute="centerY" id="SA1-9u-5HJ"/>
+                                                <constraint firstItem="OmJ-Fy-Y5n" firstAttribute="leading" secondItem="1Sa-oX-005" secondAttribute="trailing" constant="8" id="VRL-Xl-CyQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playIcon" destination="1Sa-oX-005" id="Fr3-rq-cpK"/>
+                                            <outlet property="titleLabel" destination="OmJ-Fy-Y5n" id="QA5-BV-J7H"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1An-5A-pvv" id="hOE-1E-aln"/>
+                                    <outlet property="delegate" destination="1An-5A-pvv" id="0fL-3r-ARE"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Grg-Vn-Tgs" secondAttribute="centerX" id="3ck-j4-hlL"/>
-                            <constraint firstItem="Grg-Vn-Tgs" firstAttribute="top" secondItem="FAs-Ro-ZIX" secondAttribute="bottom" constant="8" id="6yn-dh-Q3i"/>
-                            <constraint firstItem="FAs-Ro-ZIX" firstAttribute="top" secondItem="2fG-Gl-uPf" secondAttribute="bottom" constant="76" id="ONd-7F-bth"/>
-                            <constraint firstAttribute="centerX" secondItem="FAs-Ro-ZIX" secondAttribute="centerX" id="TlN-aG-Jly"/>
+                            <constraint firstItem="Grg-Vn-Tgs" firstAttribute="leading" secondItem="FAs-Ro-ZIX" secondAttribute="trailing" constant="8" id="6JM-p6-oPE"/>
+                            <constraint firstAttribute="trailing" secondItem="PmO-bf-VGJ" secondAttribute="trailing" id="Epl-jA-07p"/>
+                            <constraint firstItem="FAs-Ro-ZIX" firstAttribute="centerY" secondItem="Grg-Vn-Tgs" secondAttribute="centerY" constant="0.5" id="F0S-ni-j2A"/>
+                            <constraint firstItem="PmO-bf-VGJ" firstAttribute="leading" secondItem="eUA-p5-RNk" secondAttribute="leading" id="HWt-8U-anC"/>
+                            <constraint firstItem="FAs-Ro-ZIX" firstAttribute="top" secondItem="2fG-Gl-uPf" secondAttribute="bottom" id="ONd-7F-bth"/>
+                            <constraint firstItem="FAs-Ro-ZIX" firstAttribute="leading" secondItem="eUA-p5-RNk" secondAttribute="leading" id="Ta0-eh-xCQ"/>
+                            <constraint firstItem="3DN-ug-eGI" firstAttribute="top" secondItem="PmO-bf-VGJ" secondAttribute="bottom" id="fxL-Pa-er0"/>
+                            <constraint firstItem="PmO-bf-VGJ" firstAttribute="top" secondItem="FAs-Ro-ZIX" secondAttribute="bottom" constant="8" id="kfR-lt-8Bk"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
                         <outlet property="albumCover" destination="FAs-Ro-ZIX" id="Urk-KP-Azi"/>
                         <outlet property="titleLabel" destination="Grg-Vn-Tgs" id="90q-Uy-Rck"/>
+                        <outlet property="tracksTableView" destination="PmO-bf-VGJ" id="ndj-Jd-6tP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Msy-tC-A8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
