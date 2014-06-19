@@ -136,21 +136,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        // Get the row data for the selected row
-        var album: Album = self.albums[indexPath.row] as Album
-        println(album)
-        
-        
-        
-        var name: String = album.title!
-        
-        var formattedPrice: String = album.price!
-        
-        var alert: UIAlertView = UIAlertView()
-        alert.title = name
-        alert.message = formattedPrice
-        alert.addButtonWithTitle("Ok")
-        alert.show()
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+        var detailsViewController: DetailsViewController = segue.destinationViewController as DetailsViewController
+        var albumIndex = appsTableView.indexPathForSelectedRow().row
+        var selectedAlbum = self.albums[albumIndex]
+        detailsViewController.album = selectedAlbum
     }
+
 }

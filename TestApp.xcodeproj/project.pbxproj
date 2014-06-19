@@ -15,6 +15,7 @@
 		1F63C17A194A0B6C0065CFF8 /* TestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63C179194A0B6C0065CFF8 /* TestAppTests.swift */; };
 		1F833E2319529781006132D7 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F833E2219529781006132D7 /* Album.swift */; };
 		1FADCB131951789800A3354A /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADCB121951789800A3354A /* APIController.swift */; };
+		1FBEA9011952D18A008364B1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEA9001952D18A008364B1 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		1F63C179194A0B6C0065CFF8 /* TestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppTests.swift; sourceTree = "<group>"; };
 		1F833E2219529781006132D7 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		1FADCB121951789800A3354A /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		1FBEA9001952D18A008364B1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				1F63C16D194A0B6C0065CFF8 /* Images.xcassets */,
 				1F63C164194A0B6C0065CFF8 /* Supporting Files */,
 				1F833E2219529781006132D7 /* Album.swift */,
+				1FBEA9001952D18A008364B1 /* DetailsViewController.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				1F63C167194A0B6C0065CFF8 /* AppDelegate.swift in Sources */,
 				1FADCB131951789800A3354A /* APIController.swift in Sources */,
 				1F833E2319529781006132D7 /* Album.swift in Sources */,
+				1FBEA9011952D18A008364B1 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
