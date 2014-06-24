@@ -75,6 +75,8 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        println("Current selected rows is: \(indexPath.row)")
+        println("Current playing rows is:  \(indexOfTrackPlaying?.row)")
         var track = tracks[indexPath.row]
         var indexPathThatWasPlaying: NSIndexPath? = nil
         if let cell=tableView.cellForRowAtIndexPath(indexPath) as? TrackCell {
@@ -116,4 +118,12 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
 //            cell.layer.transform = CATransform3DMakeScale(1,1,1)
 //            })
 //    }
+    
+    func tableView(tableView:UITableView!, commitEditingStyle editingSytle:UITableViewCellEditingStyle, forRowAtIndexPath indexPath:NSIndexPath) {
+        if (editingSytle==UITableViewCellEditingStyle.Delete) {
+            println("Delete one line of data: \(indexPath.row), \(indexPath.section)")
+            self.tracks.removeAtIndex(indexPath.row)
+            self.tracksTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:UITableViewRowAnimation.Fade)
+        }
+    }
 }

@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
-        <!--Search Results View Controller-->
+        <!--Search Results View Controller - Albums List-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="SearchResultsViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="L67-NP-oJa"/>
+                    <navigationItem key="navigationItem" title="Albums List" id="L67-NP-oJa"/>
                     <connections>
                         <outlet property="appsTableView" destination="VQF-2O-TDL" id="R3l-Ig-yWI"/>
                     </connections>
@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="510" y="205"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Details View Controller - Album Details-->
         <scene sceneID="zQL-P6-F5h">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="1An-5A-pvv" customClass="DetailsViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" title="Album Details" id="1An-5A-pvv" customClass="DetailsViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2fG-Gl-uPf"/>
                         <viewControllerLayoutGuide type="bottom" id="3DN-ug-eGI"/>
@@ -94,7 +94,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PmO-bf-VGJ">
-                                <rect key="frame" x="0.0" y="172" width="480" height="308"/>
+                                <rect key="frame" x="0.0" y="172" width="480" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackCell" id="hGy-bk-L0j" customClass="TrackCell" customModule="TestApp" customModuleProvider="target">
@@ -152,6 +152,11 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Album Details" id="OzL-eJ-ihL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nWa-tX-ql9" userLabel="Add"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="albumCover" destination="FAs-Ro-ZIX" id="Urk-KP-Azi"/>
                         <outlet property="titleLabel" destination="Grg-Vn-Tgs" id="90q-Uy-Rck"/>
