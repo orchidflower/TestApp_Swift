@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F47EF7E195936BD0003955C /* 变更手机号码.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF70195936BD0003955C /* 变更手机号码.png */; };
+		1F47EF7F195936BD0003955C /* 二维码.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF71195936BD0003955C /* 二维码.png */; };
+		1F47EF80195936BD0003955C /* 风险提示.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF72195936BD0003955C /* 风险提示.png */; };
+		1F47EF81195936BD0003955C /* 交易授权.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF73195936BD0003955C /* 交易授权.png */; };
+		1F47EF82195936BD0003955C /* 删除.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF74195936BD0003955C /* 删除.png */; };
+		1F47EF83195936BD0003955C /* 身份信息.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF75195936BD0003955C /* 身份信息.png */; };
+		1F47EF84195936BD0003955C /* 锁.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF76195936BD0003955C /* 锁.png */; };
+		1F47EF85195936BD0003955C /* 添加.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF77195936BD0003955C /* 添加.png */; };
+		1F47EF86195936BD0003955C /* 推送.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF78195936BD0003955C /* 推送.png */; };
+		1F47EF87195936BD0003955C /* 一键锁.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF79195936BD0003955C /* 一键锁.png */; };
+		1F47EF88195936BD0003955C /* 邮箱.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF7A195936BD0003955C /* 邮箱.png */; };
+		1F47EF89195936BD0003955C /* 找.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF7B195936BD0003955C /* 找.png */; };
+		1F47EF8A195936BD0003955C /* xwf登录.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF7C195936BD0003955C /* xwf登录.png */; };
+		1F47EF8B195936BD0003955C /* xwf退出.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F47EF7D195936BD0003955C /* xwf退出.png */; };
 		1F80FE03194DEE2100623DD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80FE02194DEE2100623DD0 /* AppDelegate.swift */; };
 		1F80FE05194DEE2100623DD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80FE04194DEE2100623DD0 /* ViewController.swift */; };
 		1F80FE08194DEE2100623DD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F80FE06194DEE2100623DD0 /* Main.storyboard */; };
@@ -25,6 +39,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F47EF70195936BD0003955C /* 变更手机号码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "变更手机号码.png"; sourceTree = "<group>"; };
+		1F47EF71195936BD0003955C /* 二维码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "二维码.png"; sourceTree = "<group>"; };
+		1F47EF72195936BD0003955C /* 风险提示.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "风险提示.png"; sourceTree = "<group>"; };
+		1F47EF73195936BD0003955C /* 交易授权.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "交易授权.png"; sourceTree = "<group>"; };
+		1F47EF74195936BD0003955C /* 删除.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除.png"; sourceTree = "<group>"; };
+		1F47EF75195936BD0003955C /* 身份信息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "身份信息.png"; sourceTree = "<group>"; };
+		1F47EF76195936BD0003955C /* 锁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "锁.png"; sourceTree = "<group>"; };
+		1F47EF77195936BD0003955C /* 添加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加.png"; sourceTree = "<group>"; };
+		1F47EF78195936BD0003955C /* 推送.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "推送.png"; sourceTree = "<group>"; };
+		1F47EF79195936BD0003955C /* 一键锁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "一键锁.png"; sourceTree = "<group>"; };
+		1F47EF7A195936BD0003955C /* 邮箱.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "邮箱.png"; sourceTree = "<group>"; };
+		1F47EF7B195936BD0003955C /* 找.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "找.png"; sourceTree = "<group>"; };
+		1F47EF7C195936BD0003955C /* xwf登录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xwf登录.png"; sourceTree = "<group>"; };
+		1F47EF7D195936BD0003955C /* xwf退出.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xwf退出.png"; sourceTree = "<group>"; };
 		1F80FDFD194DEE2100623DD0 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F80FE01194DEE2100623DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F80FE02194DEE2100623DD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +82,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F47EF4B195921020003955C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1F47EF70195936BD0003955C /* 变更手机号码.png */,
+				1F47EF71195936BD0003955C /* 二维码.png */,
+				1F47EF72195936BD0003955C /* 风险提示.png */,
+				1F47EF73195936BD0003955C /* 交易授权.png */,
+				1F47EF74195936BD0003955C /* 删除.png */,
+				1F47EF75195936BD0003955C /* 身份信息.png */,
+				1F47EF76195936BD0003955C /* 锁.png */,
+				1F47EF77195936BD0003955C /* 添加.png */,
+				1F47EF78195936BD0003955C /* 推送.png */,
+				1F47EF79195936BD0003955C /* 一键锁.png */,
+				1F47EF7A195936BD0003955C /* 邮箱.png */,
+				1F47EF7B195936BD0003955C /* 找.png */,
+				1F47EF7C195936BD0003955C /* xwf登录.png */,
+				1F47EF7D195936BD0003955C /* xwf退出.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		1F80FDF4194DEE2100623DD0 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +124,7 @@
 		1F80FDFF194DEE2100623DD0 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				1F47EF4B195921020003955C /* Images */,
 				1F80FE02194DEE2100623DD0 /* AppDelegate.swift */,
 				1F80FE04194DEE2100623DD0 /* ViewController.swift */,
 				1F80FE06194DEE2100623DD0 /* Main.storyboard */,
@@ -189,8 +239,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F47EF88195936BD0003955C /* 邮箱.png in Resources */,
+				1F47EF85195936BD0003955C /* 添加.png in Resources */,
+				1F47EF8A195936BD0003955C /* xwf登录.png in Resources */,
 				1F80FE08194DEE2100623DD0 /* Main.storyboard in Resources */,
+				1F47EF7E195936BD0003955C /* 变更手机号码.png in Resources */,
+				1F47EF89195936BD0003955C /* 找.png in Resources */,
+				1F47EF86195936BD0003955C /* 推送.png in Resources */,
 				1F80FE0A194DEE2100623DD0 /* Images.xcassets in Resources */,
+				1F47EF84195936BD0003955C /* 锁.png in Resources */,
+				1F47EF83195936BD0003955C /* 身份信息.png in Resources */,
+				1F47EF81195936BD0003955C /* 交易授权.png in Resources */,
+				1F47EF8B195936BD0003955C /* xwf退出.png in Resources */,
+				1F47EF80195936BD0003955C /* 风险提示.png in Resources */,
+				1F47EF87195936BD0003955C /* 一键锁.png in Resources */,
+				1F47EF7F195936BD0003955C /* 二维码.png in Resources */,
+				1F47EF82195936BD0003955C /* 删除.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

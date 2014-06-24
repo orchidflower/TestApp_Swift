@@ -3,12 +3,16 @@
 //  TestApp
 //
 //  Created by zhang on 14-6-15.
-//  Copyright (c) 2014年 zhang. All rights reserved.
+//  Copyright (c) 2014 zhang. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var textEmail : UITextField
+    @IBOutlet var textPassword : UITextField
+    @IBOutlet var buttonLogin : UIButton
+    @IBOutlet var linkSettings : UILabel
                             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,13 @@ class ViewController: UIViewController {
         println("Memory low...")
     }
 
+    @IBAction func onPushButtonLogin(sender : AnyObject) {
+        println(sender)
+        let email = textEmail.text
+        let password = textPassword.text
+        
+        println("username: \(email), password: \(password)")
+    }
 
 }
 
