@@ -3,7 +3,7 @@
 //  TestApp
 //
 //  Created by zhang on 14-6-15.
-//  Copyright (c) 2014年 zhang. All rights reserved.
+//  Copyright (c) 2014 zhang. All rights reserved.
 //
 
 import UIKit
@@ -12,10 +12,31 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    var players :Player[] = []
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
+        // init players
+        var player = Player(name: "Bill Evans", game: "Tic-Tac-Toe", rating: 4)
+        self.players.append(player)
+        player = Player(name: "Oscar Peterson", game: "Spin the Bottle", rating: 5)
+        self.players.append(player)
+        player = Player(name: "Dave Brubeck", game: "Texas Hold’em Poker", rating: 2)
+        self.players.append(player)
+        
+        let tabBarController = self.window!.rootViewController as UITabBarController
+        print(tabBarController)
+        let navigationController = tabBarController.viewControllers[2] as UINavigationController
+        print(navigationController)
+        let playersViewController = navigationController.viewControllers[0] as PlayersViewController
+        playersViewController.players = self.players;
+        
+        
+        
+        println("All players count: \(self.players.count)")
+        
+        
         return true
     }
 
